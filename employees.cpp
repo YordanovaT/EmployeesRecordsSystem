@@ -91,6 +91,29 @@ int main()
                 }
                 break;
 
+            case 5:
+                std::cout<< "Enter employee ID: ";
+                std::cin>> employee_id;
+                std::cin.ignore();
+                std::cout<<"\n";
+                
+                for(int i=0; i<workers_count; i++)
+                {
+                    if(employee_id == employees->employee_id)
+                    {
+                        std::cout<<"----------------------------------- EMPLOYEE YEAR INCOME -----------------------------------\n\n";
+                        year_income(&employees[i]);
+                        std::cout<<"--------------------------------------------------------------------------------------------\n\n";
+                        flag = 1;
+                    }
+                    
+                }
+                if(flag == 0)
+                {
+                    std::cout<< "NO EXISTING EMPLOYEE WITH THE GIVEN ID.\n";
+                }
+                break;
+
             default:
                 break;
         }
