@@ -18,13 +18,13 @@ int main()
     while (1)
     {
         std::cout<<"----------------------- MENU -----------------------\n";
-        std::cout<<"Do you wish to perform an operation? Choose a number between 1-7.\n";
+        std::cout<<"Do you wish to perform an operation? Choose a number between 0-7.\n";
         std::cout<<"1. Input data for the workers.\n";
         std::cout<<"2. Output data for the workers.\n";
         std::cout<<"3. Output data for one worker.\n";
         std::cout<<"4. Output year income for all workers.\n";
         std::cout<<"5. Output year income for one worker.\n";
-        std::cout<<"6. Output the workers with year income above 20K .\n";
+        std::cout<<"6. Output the workers with year income of 30K or above.\n";
         std::cout<<"7. Output the highest month salary for a worker.\n";
         std::cout<<"0. Exit program.\n";
 
@@ -99,7 +99,7 @@ int main()
                 
                 for(int i=0; i<workers_count; i++)
                 {
-                    if(employee_id == employees->employee_id)
+                    if(employee_id == employees[i].employee_id)
                     {
                         std::cout<<"----------------------------------- EMPLOYEE YEAR INCOME -----------------------------------\n\n";
                         year_income(&employees[i]);
@@ -112,6 +112,39 @@ int main()
                 {
                     std::cout<< "NO EXISTING EMPLOYEE WITH THE GIVEN ID.\n";
                 }
+                break;
+
+            case 6:
+
+                for(int i=0; i<workers_count; i++)
+                {
+                    rich_employees(&employees[i]);
+                }  
+
+                break;    
+
+            case 7:
+                std::cout<< "Enter employee ID: ";
+                std::cin>> employee_id;
+                std::cin.ignore();
+                std::cout<<"\n";
+
+                for (int i = 0; i < workers_count; i++)
+                {
+                    if(employee_id == employees[i].employee_id)
+                    {
+                        std::cout<<"----------------------------- HIGHEST MONTH SALARY FOR EMPLOYEE  -----------------------------\n\n";
+                        highest_mon_salary(&employees[i]);
+                        flag=1;
+                        std::cout<<"--------------------------------------------------------------------------------------------\n\n";
+                    }
+                }
+                
+                if(flag == 0)
+                {
+                    std::cout<< "NO EXISTING EMPLOYEE WITH THE GIVEN ID.\n";
+                }
+    
                 break;
 
             default:
